@@ -1,0 +1,17 @@
+services:
+  postgres-db:
+    image: postgres
+    env_file:
+      - .env
+    environment:
+      PGUSER: ${POSTGRES_USER}
+      PGDATABASE: ${POSTGRES_DB}
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./create-tables.sql:/docker-entrypoint-initdb.d/create-tables.sql
+      - gooseData:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    restart: unless-stopped
+volumes:
+  gooseData:
