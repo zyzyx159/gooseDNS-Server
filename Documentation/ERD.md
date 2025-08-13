@@ -1,7 +1,7 @@
 ```mermaid
 %%{init: {'theme':'dark'}}%%
 erDiagram
-	domain {
+	domains {
 		varchar domain PK
 		varchar email
 		int sn
@@ -32,8 +32,8 @@ erDiagram
 		varchar ipv4
 		varchar ipv6
 	}
-	domain ||--o{ records : "has"
-	domain ||--o{ subdomains : "has"
+	domains ||--o{ records : "has"
+	domains ||--o{ subdomains : "has"
 	subdomains ||--o{ IPaddr : "has"
 ```
 
